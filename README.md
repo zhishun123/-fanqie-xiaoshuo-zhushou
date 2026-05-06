@@ -59,7 +59,7 @@ python main.py
 ## ⚙️ 配置文件说明 (`config.py`)
 
 你可以直接通过 `gui.py` 界面进行修改，也可以手动编辑 `config.py` 文件：
-- `WORK_URL`: 你的番茄作品后台链接
+- `WORK_URL`: 你的番茄作品后台链接（**必须填写当前小说的「章节管理」界面链接**，自动化程序会以此为基准进行上传）
 - `CHAPTERS_DIR`: 存放 TXT 格式小说的绝对路径
 - `SCHEDULED_PUBLISH`: 是否开启定时发布
 - `ACTION_DELAY`: 每个动作间的间隔（秒），建议保持在 1.5 秒以上防风控
