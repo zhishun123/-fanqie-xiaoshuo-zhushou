@@ -25,23 +25,26 @@ QMainWindow {
 }
 QGroupBox {
     background-color: #ffffff;
-    color: #2f3542;
+    color: #ff4757;
     font-weight: bold;
     font-size: 14px;
     border: 1px solid #e4e9f0;
-    border-radius: 10px;
-    margin-top: 24px;
-    padding: 20px 15px 15px 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    padding-top: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 QGroupBox::title {
     subcontrol-origin: margin;
     subcontrol-position: top left;
     left: 15px;
-    padding: 4px 12px;
+    top: 5px;
+    padding: 2px 8px;
     background-color: #ff4757;
     color: #ffffff;
-    border-radius: 6px;
-    margin-top: -12px;
+    border-radius: 4px;
 }
 QLabel {
     color: #57606f;
@@ -53,8 +56,9 @@ QLineEdit, QSpinBox, QDoubleSpinBox, QDateTimeEdit {
     color: #2f3542;
     border: 1.5px solid #e4e9f0;
     border-radius: 6px;
-    padding: 8px 10px;
+    padding: 4px 8px;
     font-size: 13px;
+    min-height: 22px;
 }
 QLineEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus, QDateTimeEdit:focus {
     border: 1.5px solid #ff4757;
@@ -67,7 +71,8 @@ QPushButton {
     font-size: 13px;
     border: 1.5px solid #e4e9f0;
     border-radius: 6px;
-    padding: 8px 16px;
+    padding: 6px 12px;
+    min-height: 24px;
 }
 QPushButton:hover {
     background-color: #f1f2f6;
@@ -79,10 +84,10 @@ QPushButton:pressed {
 QPushButton#startBtn {
     background-color: #ff4757;
     color: white;
-    font-size: 15px;
+    font-size: 14px;
     border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
+    padding: 10px 16px;
+    border-radius: 6px;
 }
 QPushButton#startBtn:hover {
     background-color: #ff6b81;
@@ -90,10 +95,10 @@ QPushButton#startBtn:hover {
 QPushButton#stopBtn {
     background-color: #747d8c;
     color: white;
-    font-size: 15px;
+    font-size: 14px;
     border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
+    padding: 10px 16px;
+    border-radius: 6px;
 }
 QPushButton#stopBtn:hover {
     background-color: #a4b0be;
@@ -103,9 +108,9 @@ QPushButton#saveBtn {
     color: white;
     font-size: 14px;
     border: none;
-    padding: 12px;
-    border-radius: 8px;
-    margin-top: 10px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    margin-top: 5px;
 }
 QPushButton#saveBtn:hover {
     background-color: #7bed9f;
@@ -114,20 +119,21 @@ QTextEdit {
     background-color: #ffffff;
     color: #2f3542;
     border: 1px solid #e4e9f0;
-    border-radius: 10px;
+    border-radius: 8px;
     font-family: 'Consolas', 'Courier New', monospace;
     font-size: 13px;
-    padding: 12px;
+    padding: 10px;
 }
 QCheckBox {
     color: #2f3542;
     font-size: 13px;
     font-weight: bold;
+    padding: 2px;
 }
 QCheckBox::indicator {
-    width: 18px;
-    height: 18px;
-    border: 2px solid #ced6e0;
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid #ced6e0;
     border-radius: 4px;
     background-color: #ffffff;
 }
