@@ -270,6 +270,12 @@ class FanqieAutoPublisherGUI(QMainWindow):
         # 下方的内容区布局
         content_layout = QHBoxLayout()
         content_layout.setSpacing(25)
+
+        # ================= 左侧设置面板 =================
+        left_panel = QWidget()
+        left_layout = QVBoxLayout(left_panel)
+        left_layout.setContentsMargins(0, 0, 0, 0)
+
         scroll_area = QScrollArea()
         scroll_area.setWidgetResizable(True)
         scroll_area.setFrameShape(QFrame.NoFrame)
