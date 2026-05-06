@@ -20,115 +20,130 @@ import config
 
 STYLE_SHEET = """
 QMainWindow {
-    background-color: #1e1e2e;
+    background-color: #f4f6f8;
     font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
 }
 QGroupBox {
-    color: #cdd6f4;
+    background-color: #ffffff;
+    color: #2f3542;
     font-weight: bold;
     font-size: 14px;
-    border: 1px solid #45475a;
-    border-radius: 8px;
-    margin-top: 15px;
-    padding-top: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
+    border: 1px solid #e4e9f0;
+    border-radius: 10px;
+    margin-top: 24px;
+    padding: 20px 15px 15px 15px;
 }
 QGroupBox::title {
     subcontrol-origin: margin;
     subcontrol-position: top left;
     left: 15px;
-    padding: 0 5px;
-    color: #89b4fa;
+    padding: 4px 12px;
+    background-color: #ff4757;
+    color: #ffffff;
+    border-radius: 6px;
+    margin-top: -12px;
 }
 QLabel {
-    color: #bac2de;
+    color: #57606f;
     font-size: 13px;
+    font-weight: 500;
 }
 QLineEdit, QSpinBox, QDoubleSpinBox, QDateTimeEdit {
-    background-color: #313244;
-    color: #cdd6f4;
-    border: 1px solid #45475a;
-    border-radius: 4px;
-    padding: 6px;
+    background-color: #f8f9fa;
+    color: #2f3542;
+    border: 1.5px solid #e4e9f0;
+    border-radius: 6px;
+    padding: 8px 10px;
     font-size: 13px;
 }
 QLineEdit:focus, QSpinBox:focus, QDoubleSpinBox:focus, QDateTimeEdit:focus {
-    border: 1px solid #89b4fa;
+    border: 1.5px solid #ff4757;
+    background-color: #ffffff;
 }
 QPushButton {
-    background-color: #89b4fa;
-    color: #1e1e2e;
+    background-color: #ffffff;
+    color: #2f3542;
     font-weight: bold;
     font-size: 13px;
-    border: none;
-    border-radius: 4px;
+    border: 1.5px solid #e4e9f0;
+    border-radius: 6px;
     padding: 8px 16px;
 }
 QPushButton:hover {
-    background-color: #b4befe;
+    background-color: #f1f2f6;
+    border-color: #ced6e0;
 }
 QPushButton:pressed {
-    background-color: #74c7ec;
+    background-color: #e4e9f0;
 }
 QPushButton#startBtn {
-    background-color: #a6e3a1;
-    font-size: 14px;
-    padding: 10px 20px;
+    background-color: #ff4757;
+    color: white;
+    font-size: 15px;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
 }
 QPushButton#startBtn:hover {
-    background-color: #94e2d5;
+    background-color: #ff6b81;
 }
 QPushButton#stopBtn {
-    background-color: #f38ba8;
-    font-size: 14px;
-    padding: 10px 20px;
+    background-color: #747d8c;
+    color: white;
+    font-size: 15px;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
 }
 QPushButton#stopBtn:hover {
-    background-color: #eba0ac;
+    background-color: #a4b0be;
 }
 QPushButton#saveBtn {
-    background-color: #f9e2af;
+    background-color: #2ed573;
+    color: white;
+    font-size: 14px;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 10px;
 }
 QPushButton#saveBtn:hover {
-    background-color: #f5e0dc;
+    background-color: #7bed9f;
 }
 QTextEdit {
-    background-color: #11111b;
-    color: #cdd6f4;
-    border: 1px solid #45475a;
-    border-radius: 6px;
+    background-color: #ffffff;
+    color: #2f3542;
+    border: 1px solid #e4e9f0;
+    border-radius: 10px;
     font-family: 'Consolas', 'Courier New', monospace;
     font-size: 13px;
-    padding: 8px;
+    padding: 12px;
 }
 QCheckBox {
-    color: #bac2de;
+    color: #2f3542;
     font-size: 13px;
+    font-weight: bold;
 }
 QCheckBox::indicator {
     width: 18px;
     height: 18px;
-    border: 1px solid #45475a;
+    border: 2px solid #ced6e0;
     border-radius: 4px;
-    background-color: #313244;
+    background-color: #ffffff;
 }
 QCheckBox::indicator:checked {
-    background-color: #89b4fa;
-    border-color: #89b4fa;
-    image: url(check.png); /* Optional check icon */
+    background-color: #ff4757;
+    border-color: #ff4757;
 }
 QScrollBar:vertical {
     border: none;
-    background: #1e1e2e;
-    width: 8px;
-    margin: 0px;
+    background: transparent;
+    width: 6px;
 }
 QScrollBar::handle:vertical {
-    background: #45475a;
+    background: #ced6e0;
     min-height: 20px;
-    border-radius: 4px;
+    border-radius: 3px;
 }
 """
 
@@ -147,7 +162,7 @@ class UploaderThread(QThread):
 
     def run(self):
         try:
-            self.log_signal.emit("✅ 准备启动自动化进程...", "#a6e3a1")
+            self.log_signal.emit("✅ 准备启动自动化进程...", "#2ed573")
             
             # 使用 subprocess 调用独立的 runner.py 避免 Playwright 的主线程断言错误
             self.process = subprocess.Popen(
@@ -171,13 +186,13 @@ class UploaderThread(QThread):
                 if not line: continue
                 
                 # 根据前缀判断颜色
-                color = "#bac2de"
+                color = "#57606f"
                 if "[SUCCESS]" in line or "✅" in line or "成功" in line:
-                    color = "#a6e3a1"
+                    color = "#2ed573"
                 elif "[WARNING]" in line or "⚠️" in line:
-                    color = "#f9e2af"
+                    color = "#ffa502"
                 elif "[ERROR]" in line or "❌" in line or "失败" in line or "异常" in line:
-                    color = "#f38ba8"
+                    color = "#ff4757"
                 
                 # 过滤掉丑陋的前缀显示，让界面更清爽
                 clean_line = line.replace("[INFO]", "").replace("[SUCCESS]", "").replace("[WARNING]", "").replace("[ERROR]", "").strip()
@@ -189,11 +204,11 @@ class UploaderThread(QThread):
             
             if self._is_running:
                 if self.process.returncode == 0:
-                    self.log_signal.emit("🎉 自动化流程正常结束", "#a6e3a1")
+                    self.log_signal.emit("🎉 自动化流程正常结束", "#2ed573")
                 else:
-                    self.log_signal.emit(f"⚠️ 自动化进程异常退出，状态码: {self.process.returncode}", "#f38ba8")
+                    self.log_signal.emit(f"⚠️ 自动化进程异常退出，状态码: {self.process.returncode}", "#ff4757")
             else:
-                self.log_signal.emit("⚠️ 任务已被用户取消", "#f9e2af")
+                self.log_signal.emit("⚠️ 任务已被用户取消", "#ffa502")
                 
         except Exception as e:
             self.error_signal.emit(str(e))
@@ -207,14 +222,14 @@ class UploaderThread(QThread):
                 self.process.terminate()
             except:
                 pass
-        self.log_signal.emit("正在停止任务...", "#f9e2af")
+        self.log_signal.emit("正在停止任务...", "#ffa502")
 
 
 class FanqieAutoPublisherGUI(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("番茄小说自动化发布系统")
-        self.resize(1100, 750)
+        self.setWindowTitle("番茄小说自动化发布系统 - 智能控制面板")
+        self.resize(1150, 800)
         self.setStyleSheet(STYLE_SHEET)
         
         self.thread = None
@@ -224,15 +239,37 @@ class FanqieAutoPublisherGUI(QMainWindow):
     def init_ui(self):
         main_widget = QWidget()
         self.setCentralWidget(main_widget)
-        main_layout = QHBoxLayout(main_widget)
-        main_layout.setContentsMargins(20, 20, 20, 20)
-        main_layout.setSpacing(20)
-
-        # ================= 左侧设置面板 =================
-        left_panel = QWidget()
-        left_layout = QVBoxLayout(left_panel)
-        left_layout.setContentsMargins(0, 0, 0, 0)
         
+        # 整体采用垂直布局，头部为 banner，下方为内容区
+        root_layout = QVBoxLayout(main_widget)
+        root_layout.setContentsMargins(25, 25, 25, 25)
+        root_layout.setSpacing(20)
+        
+        # 顶部横幅 Banner
+        banner_frame = QFrame()
+        banner_frame.setStyleSheet("background-color: #ffffff; border-radius: 12px; border: 1px solid #e4e9f0;")
+        banner_layout = QHBoxLayout(banner_frame)
+        banner_layout.setContentsMargins(20, 15, 20, 15)
+        
+        title_label = QLabel("🍅 番茄小说自动化发布系统")
+        title_label.setFont(QFont("Microsoft YaHei", 22, QFont.Bold))
+        title_label.setStyleSheet("color: #ff4757; border: none;")
+        
+        subtitle_label = QLabel("智能 · 高效 · 防风控的全自动草稿与定时发布管家")
+        subtitle_label.setFont(QFont("Microsoft YaHei", 12))
+        subtitle_label.setStyleSheet("color: #a4b0be; border: none;")
+        
+        banner_text_layout = QVBoxLayout()
+        banner_text_layout.addWidget(title_label)
+        banner_text_layout.addWidget(subtitle_label)
+        banner_layout.addLayout(banner_text_layout)
+        banner_layout.addStretch()
+        
+        root_layout.addWidget(banner_frame)
+        
+        # 下方的内容区布局
+        content_layout = QHBoxLayout()
+        content_layout.setSpacing(25)
         scroll_area = QScrollArea()
         scroll_area.setWidgetResizable(True)
         scroll_area.setFrameShape(QFrame.NoFrame)
@@ -329,7 +366,7 @@ class FanqieAutoPublisherGUI(QMainWindow):
         self.save_btn.clicked.connect(self.save_settings)
         left_layout.addWidget(self.save_btn)
 
-        main_layout.addWidget(left_panel, 1)
+        content_layout.addWidget(left_panel, 1)
 
         # ================= 右侧执行面板 =================
         right_panel = QWidget()
@@ -355,13 +392,17 @@ class FanqieAutoPublisherGUI(QMainWindow):
         # 日志输出区域
         log_label = QLabel("🚀 运行日志")
         log_label.setFont(QFont("Microsoft YaHei", 12, QFont.Bold))
+        log_label.setStyleSheet("color: #ff4757;")
         right_layout.addWidget(log_label)
         
         self.log_text = QTextEdit()
         self.log_text.setReadOnly(True)
         right_layout.addWidget(self.log_text)
 
-        main_layout.addWidget(right_panel, 2)
+        content_layout.addWidget(right_panel, 2)
+        
+        # 将水平内容区加入根垂直布局
+        root_layout.addLayout(content_layout)
 
     def load_settings(self):
         """从 config.py 加载配置到 UI"""
@@ -444,9 +485,9 @@ class FanqieAutoPublisherGUI(QMainWindow):
         except Exception as e:
             QMessageBox.critical(self, "保存失败", f"保存配置时发生错误: {str(e)}")
 
-    def append_log(self, msg, color="#bac2de"):
+    def append_log(self, msg, color="#57606f"):
         time_str = QTime.currentTime().toString("HH:mm:ss")
-        html_msg = f'<span style="color: #6c7086;">[{time_str}]</span> <span style="color: {color};">{msg}</span>'
+        html_msg = f'<span style="color: #a4b0be;">[{time_str}]</span> <span style="color: {color};">{msg}</span>'
         self.log_text.append(html_msg)
         
         # 自动滚动到底部
@@ -462,11 +503,11 @@ class FanqieAutoPublisherGUI(QMainWindow):
         self.save_btn.setEnabled(False)
         self.stop_btn.setEnabled(True)
         self.log_text.clear()
-        self.append_log("🚀 启动自动化上传任务...", "#89b4fa")
+        self.append_log("🚀 启动自动化上传任务...", "#1e90ff")
         
         self.thread = UploaderThread()
         self.thread.log_signal.connect(self.append_log)
-        self.thread.error_signal.connect(lambda e: self.append_log(f"❌ 发生异常: {e}", "#f38ba8"))
+        self.thread.error_signal.connect(lambda e: self.append_log(f"❌ 发生异常: {e}", "#ff4757"))
         self.thread.finished_signal.connect(self.on_upload_finished)
         self.thread.start()
 
@@ -479,17 +520,13 @@ class FanqieAutoPublisherGUI(QMainWindow):
         self.start_btn.setEnabled(True)
         self.save_btn.setEnabled(True)
         self.stop_btn.setEnabled(False)
-        self.append_log("⏹ 任务结束。", "#bac2de")
+        self.append_log("⏹ 任务结束。", "#57606f")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     
-    # 强制深色模式融合
+    # 使用 Fusion 风格，去除原本的强制黑暗模式
     app.setStyle("Fusion")
-    palette = QPalette()
-    palette.setColor(QPalette.Window, QColor(30, 30, 46))
-    palette.setColor(QPalette.WindowText, Qt.white)
-    app.setPalette(palette)
     
     gui = FanqieAutoPublisherGUI()
     gui.show()
